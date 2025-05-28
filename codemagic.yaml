@@ -7,12 +7,8 @@ workflows:
       vars:
         APP_NAME: "ResenhaApp"
         OPENAI_API_KEY: Encrypted(XXXXXXXXXXXXXXXXXXXXXXXXXXX)
-        CM_KEYSTORE_PATH: $CM_KEYSTORE_PATH
-        CM_KEYSTORE_PASSWORD: $CM_KEYSTORE_PASSWORD
-        CM_KEY_ALIAS: "resenha_key"
-        CM_KEY_PASSWORD: $CM_KEY_PASSWORD
       android_signing:
-        - keystore: "resenha_keystore" # ✅ Corrigido: campo exigido pelo Codemagic
+        - name: resenha_keystore # mesmo nome definido no painel Codemagic
 
     scripts:
       - name: 📝 Criar arquivo .env
