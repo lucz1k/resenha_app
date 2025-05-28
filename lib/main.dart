@@ -25,6 +25,8 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key}); // 👈 isso resolve o problema do teste
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
