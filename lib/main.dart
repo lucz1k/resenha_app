@@ -25,7 +25,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key}); // 👈 isso resolve o problema do teste
+  MyApp({super.key}); // ✅ removido const
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       title: 'Resenha App',
       initialRoute: '/',
       routes: {
-        '/': (context) => DadosIniciaisPage(),
+        '/': (context) => DadosIniciaisPage(), // ✅ sem const
         '/equipe_apoios': (context) => EquipeApoiosPage(),
         '/envolvidos': (context) => EnvolvidosPage(),
         '/veiculos_outros': (context) => VeiculosOutrosPage(),
