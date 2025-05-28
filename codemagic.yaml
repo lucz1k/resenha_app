@@ -6,9 +6,12 @@ workflows:
       flutter: stable
       vars:
         APP_NAME: "ResenhaApp"
-        OPENAI_API_KEY: Encrypted(XXXXXXXXXXXXXXXXXXXXXXXXXXX)
+        OPENAI_API_KEY: Encrypted(OPENAI_API_KEY)
+        CM_KEYSTORE_PASSWORD: Encrypted(CM_KEYSTORE_PASSWORD)
+        CM_KEY_ALIAS: Encrypted(CM_KEY_ALIAS)
+        CM_KEY_PASSWORD: Encrypted(CM_KEY_PASSWORD)
       android_signing:
-        - name: resenha_keystore # mesmo nome definido no painel Codemagic
+        - keystore: resenha_keystore # <== nome salvo no painel do Codemagic
 
     scripts:
       - name: 📝 Criar arquivo .env
@@ -22,10 +25,6 @@ workflows:
       - name: ✅ Rodar testes
         script: |
           flutter test
-
-      - name: 🧪 Remover .env do pubspec.yaml (se necessário)
-        script: |
-          sed -i '/\.env/d' pubspec.yaml || true
 
       - name: 📦 Gerar APK Android
         script: |
