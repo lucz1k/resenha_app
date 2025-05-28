@@ -1,4 +1,3 @@
-// main.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -11,13 +10,15 @@ import 'package:resenha_app/screens/historico.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // ⚠️ Corrigido: usar try/catch para funcionar em build (sem .env local)
   try {
     await dotenv.load(fileName: ".env");
+    debugPrint("✅ .env carregado com sucesso: ${dotenv.env['OPENAI_API_KEY']?.substring(0, 5)}...");
   } catch (e) {
-    await dotenv.testLoad(
+    debugPrint("⚠️ .env não encontrado, usando fallback de ambiente...");
+    dotenv.testLoad(
       fileInput: 'OPENAI_API_KEY=${const String.fromEnvironment('OPENAI_API_KEY')}',
     );
+    debugPrint("🔐 OPENAI_API_KEY carregado do ambiente: ${dotenv.env['OPENAI_API_KEY']?.substring(0, 5)}...");
   }
 
   runApp(MyApp());
