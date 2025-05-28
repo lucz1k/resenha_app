@@ -1,0 +1,48 @@
+workflows:
+  flutter-app-release:
+    name: ResenhaApp Release
+    max_build_duration: 30
+    environment:
+      flutter: stable
+      vars:
+        APP_NAME: "ResenhaApp"
+        OPENAI_API_KEY: Encrypted(XXXXXXXXXXXXXXXXXXXXXXXXXXX)
+        CM_KEYSTORE_PATH: $CM_KEYSTORE_PATH
+        CM_KEYSTORE_PASSWORD: $CM_KEYSTORE_PASSWORD
+        CM_KEY_ALIAS: "resenha_key"
+        CM_KEY_PASSWORD: $CM_KEY_PASSWORD
+      android_signing:
+        keystore_reference: "resenha_keystore" # Nome salvo no painel Codemagic
+
+    scripts:
+      - name: 📝 Criar arquivo .env
+        script: |
+          echo "OPENAI_API_KEY=$OPENAI_API_KEY" > .env
+
+      - name: 🔧 Instalar dependências
+        script: |
+          flutter pub get
+
+      - name: ✅ Rodar testes
+        script: |
+          flutter test
+
+      - name: 🧪 Remover .env do pubspec.yaml (se necessário)
+        script: |
+          sed -i '/\.env/d' pubspec.yaml || true
+
+      - name: 📦 Gerar APK Android
+        script: |
+          flutter build apk --release --build-name=1.0.0 --build-number=1
+
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+      - build/**/outputs/**/*.aab
+
+    publishing:
+      email:
+        recipients:
+          - seuemail@exemplo.com
+        notify:
+          success: true
+          failure: true
