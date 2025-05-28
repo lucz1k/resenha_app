@@ -12,7 +12,7 @@ workflows:
         CM_KEY_ALIAS: "resenha_key"
         CM_KEY_PASSWORD: $CM_KEY_PASSWORD
       android_signing:
-        - keystore_reference: "resenha_keystore" # ✅ Agora está como lista (com "-")
+        - keystore: "resenha_keystore" # ✅ Corrigido: campo exigido pelo Codemagic
 
     scripts:
       - name: 📝 Criar arquivo .env
