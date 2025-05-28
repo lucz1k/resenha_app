@@ -12,7 +12,7 @@ workflows:
         CM_KEY_ALIAS: "resenha_key"
         CM_KEY_PASSWORD: $CM_KEY_PASSWORD
       android_signing:
-        keystore_reference: "resenha_keystore" # Nome salvo no painel Codemagic
+        - keystore_reference: "resenha_keystore" # ✅ Agora está como lista (com "-")
 
     scripts:
       - name: 📝 Criar arquivo .env
