@@ -1,66 +1,74 @@
 # 📱 ResenhaApp
 
-Aplicativo desenvolvido para facilitar e padronizar o preenchimento de **resenhas operacionais policiais**, com integração de voz, salvamento automático de rascunhos e geração de texto final estruturado.
+**ResenhaApp** é um aplicativo mobile desenvolvido em Flutter com o objetivo de facilitar e padronizar o preenchimento de resenhas operacionais no turno de serviço policial.
+
+> 🚔 De policial para policial, sem vínculos institucionais.
 
 ---
 
-## ✨ Funcionalidades
+## 🎯 Objetivo
 
-- 📝 Formulários de preenchimento de dados operacionais
-- 🔄 Salvamento automático de rascunhos com SharedPreferences
-- 🧠 Correção gramatical via API OpenAI
-- 🎙️ Ditado por voz para preenchimento do histórico
-- 📋 Copiar resenha final com formatação pronta para envio por WhatsApp
-- 💾 Botões de “Salvar como padrão” para dados recorrentes
+Criado para otimizar o tempo dos profissionais da segurança pública, o ResenhaApp simplifica o processo de registro de ocorrências, organização de dados e envio da resenha final formatada por WhatsApp.
 
 ---
 
-## 🚀 Como executar
+## 🛠 Funcionalidades
 
-1. Clone o repositório:
+- ✅ Tela de dados iniciais (data, hora, local, natureza)
+- 👮 Cadastro da equipe e apoios
+- 👤 Inserção de envolvidos (PMs, vítimas, autores, testemunhas)
+- 🚗 Cadastro de veículos e objetos
+- 📝 Geração automática de resenha com correção ortográfica
+- 📤 Envio direto pelo WhatsApp
+
+---
+
+## 🔒 Segurança
+
+- As requisições à OpenAI são feitas via **servidor intermediário (proxy)**, protegendo a chave de API.
+- O arquivo `.env` **não é incluído** no repositório.
+- Nenhuma informação pessoal ou sensível é armazenada.
+
+---
+
+## 📦 Instalação
+
+### 📱 Instalar via APK (Android)
+
+1. [Clique aqui para baixar o APK](https://github.com/lucz1k/resenha_app/raw/refs/heads/main/ResenhaApp%20(v.1.0%20BETA).apk) ou escaneie o QR Code abaixo:
+
+   ![QR Code para Download](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://github.com/lucz1k/resenha_app/raw/refs/heads/main/ResenhaApp%20(v.1.0%20BETA).apk)
+
+2. Após o download:
+    - Se aparecer “Instalação bloqueada”, vá em **Configurações > Segurança** e ative **Permitir desta fonte**
+    - Instale normalmente
+    - O ícone do app aparecerá na sua tela inicial
+
+---
+
+## 🔄 Atualizações
+
+O app não possui atualizações automáticas por enquanto. Recomenda-se acompanhar novas versões via WhatsApp ou GitHub.
+
+---
+
+## 🧑‍💻 Desenvolvimento
+
+- Desenvolvido em [Flutter](https://flutter.dev)
+- Publicado via [Codemagic CI/CD](https://codemagic.io/)
+- Backend intermediário em [Node.js + Express](https://expressjs.com/) para proteção da API
+
+---
+
+## ✅ Como compilar
+
+Para desenvolvedores que desejam contribuir:
 
 ```bash
 git clone https://github.com/lucz1k/resenha_app.git
 cd resenha_app
-Instale as dependências:
-
-bash
-Copiar
-Editar
 flutter pub get
-Crie um arquivo .env na raiz do projeto com sua chave da OpenAI:
-
-env
-Copiar
-Editar
-OPENAI_API_KEY=sua_chave_aqui
-
-Execute o app:
-
-bash
-Copiar
-Editar
 flutter run
-📦 Tecnologias utilizadas
-Flutter 3.x
 
-Dart
-
-SharedPreferences
-
-HTTP + dotenv
-
-SpeechToText
-
-OpenAI API (GPT-3.5-turbo)
-
-🔐 Observações
-O arquivo .env está no .gitignore e não é enviado para o repositório por segurança.
-Nunca compartilhe sua chave da OpenAI publicamente.
-
-🧑‍💻 Desenvolvedor
-Asp Of PM Artigiani
-GitHub: lucz1k
-
-📄 Licença
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
+🤝 Contribuição
+Sugestões, correções ou ideias são sempre bem-vindas. Entre em contato via WhatsApp ou abra uma issue.
