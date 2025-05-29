@@ -6,9 +6,7 @@ import 'package:resenha_app/screens/envolvidos.dart';
 import 'package:resenha_app/screens/veiculos_outros.dart';
 import 'package:resenha_app/screens/historico.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
+void main() {
   runApp(MyApp());
 }
 

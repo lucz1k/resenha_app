@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+//import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'dart:convert';
 import 'dart:async';
@@ -77,39 +77,18 @@ class _HistoricoPageState extends State<HistoricoPage> {
   }
 
   Future<String> _corrigirPortugues(String textoOriginal) async {
-    final apiKey = dotenv.env['OPENAI_API_KEY'];
-    if (apiKey == null || apiKey.isEmpty) {
-      debugPrint("❌ API KEY ausente ou inválida.");
-      throw Exception("Chave da API OpenAI não encontrada.");
-    }
-
     if (textoOriginal.trim().length < 20) {
       throw Exception("O texto é muito curto para correção.");
     }
 
-    debugPrint("🔄 Enviando texto para correção:\n$textoOriginal");
-
-    final url = Uri.parse('https://api.openai.com/v1/chat/completions');
+    final url = Uri.parse('https://resenha-proxy.onrender.com/corrigir'); // <-- Seu novo endpoint
 
     final headers = {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer $apiKey',
     };
 
     final body = jsonEncode({
-      "model": "gpt-3.5-turbo",
-      "messages": [
-        {
-          "role": "system",
-          "content": "Corrija o português do texto policial mantendo a estrutura original e a capitalização natural das palavras. Não utilize caixa alta, exceto quando gramaticalmente necessário (como nomes próprios, inícios de frase ou siglas). Não remova nenhuma informação do texto."
-        },
-        {
-          "role": "user",
-          "content": textoOriginal
-        }
-      ],
-      "temperature": 0.5,
-      "max_tokens": 1000,
+      "texto": textoOriginal,
     });
 
     final response = await http.post(url, headers: headers, body: body);
@@ -119,10 +98,10 @@ class _HistoricoPageState extends State<HistoricoPage> {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      return data['choices'][0]['message']['content'].toString().trim();
+      return data['textoCorrigido']?.toString().trim() ?? "";
     } else {
       final erro = jsonDecode(response.body);
-      throw Exception("Erro da API: ${erro['error']['message'] ?? response.body}");
+      throw Exception("Erro no servidor: ${erro['error'] ?? response.body}");
     }
   }
 
