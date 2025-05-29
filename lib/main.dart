@@ -7,21 +7,21 @@ import 'package:resenha_app/screens/envolvidos.dart';
 import 'package:resenha_app/screens/veiculos_outros.dart';
 import 'package:resenha_app/screens/historico.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   try {
     await dotenv.load(fileName: ".env");
-    debugPrint("✅ .env carregado com sucesso: ${dotenv.env['OPENAI_API_KEY']?.substring(0, 5)}...");
+    debugPrint("✅ .env carregado com sucesso");
   } catch (e) {
-    debugPrint("⚠️ .env não encontrado, usando fallback de ambiente...");
+    debugPrint("⚠️ Erro ao carregar .env: $e");
     dotenv.testLoad(
       fileInput: 'OPENAI_API_KEY=${const String.fromEnvironment('OPENAI_API_KEY')}',
     );
-    debugPrint("🔐 OPENAI_API_KEY carregado do ambiente: ${dotenv.env['OPENAI_API_KEY']?.substring(0, 5)}...");
   }
 
   runApp(MyApp());
+  debugPrint("🚀 runApp foi chamado");
 }
 
 class MyApp extends StatelessWidget {
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       title: 'Resenha App',
       initialRoute: '/',
       routes: {
-        '/': (context) => DadosIniciaisPage(), // ✅ sem const
+        '/': (context) => DadosIniciaisPage(),
         '/equipe_apoios': (context) => EquipeApoiosPage(),
         '/envolvidos': (context) => EnvolvidosPage(),
         '/veiculos_outros': (context) => VeiculosOutrosPage(),

@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 class EquipeApoiosPage extends StatefulWidget {
+  const EquipeApoiosPage({super.key});
   @override
   _EquipeApoiosPageState createState() => _EquipeApoiosPageState();
 }

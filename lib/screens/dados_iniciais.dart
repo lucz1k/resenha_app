@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'dart:async';
 
 class DadosIniciaisPage extends StatefulWidget {
+  const DadosIniciaisPage({super.key});
   @override
   _DadosIniciaisPageState createState() => _DadosIniciaisPageState();
 }
