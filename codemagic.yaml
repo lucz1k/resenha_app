@@ -4,6 +4,8 @@ workflows:
     max_build_duration: 30
     environment:
       flutter: stable
+      groups: # Adicione esta seção
+        - default # Especifique o grupo "default"
       vars:
         APP_NAME: "ResenhaApp"
       android_signing:
