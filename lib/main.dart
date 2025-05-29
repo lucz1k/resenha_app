@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 import 'package:resenha_app/screens/dados_iniciais.dart';
 import 'package:resenha_app/screens/equipe_apoios.dart';
 import 'package:resenha_app/screens/envolvidos.dart';
@@ -9,16 +8,7 @@ import 'package:resenha_app/screens/historico.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  try {
-    await dotenv.load(fileName: ".env");
-  } catch (e) {
-    debugPrint("⚠️ .env não encontrado, usando fallback...");
-    dotenv.testLoad(
-      fileInput: 'OPENAI_API_KEY=${const String.fromEnvironment('OPENAI_API_KEY')}',
-    );
-  }
-
+  await dotenv.load(fileName: ".env");
   runApp(MyApp());
 }
 

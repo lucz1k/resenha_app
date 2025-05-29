@@ -9,10 +9,12 @@ workflows:
       android_signing:
         - keystore: resenha_keystore
 
-    scripts:
-      - name: 📝 Criar arquivo .env
-        script: |
-          echo "OPENAI_API_KEY=$OPENAI_API_KEY" > .env
+scripts:
+  - name: 📝 Criar arquivo .env
+    script: |
+      echo "OPENAI_API_KEY=$OPENAI_API_KEY" > .env
+      echo "--- Conteúdo do .env gerado: ---"
+      cat .env
 
       - name: 🔧 Instalar dependências
         script: |
