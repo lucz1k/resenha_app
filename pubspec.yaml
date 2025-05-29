@@ -27,6 +27,6 @@ flutter:
   uses-material-design: true
 
   # ✅ Apenas para builds locais (desenvolvimento)
-  # Em produção, o Codemagic cria dinamicamente o .env e remove esta linha
+  # Em produção, o Codemagic cria dinamicamente o .env e remove esta linha.
   assets:
   ##  - .env
