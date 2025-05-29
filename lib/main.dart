@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:resenha_app/screens/dados_iniciais.dart';
 import 'package:resenha_app/screens/equipe_apoios.dart';
 import 'package:resenha_app/screens/envolvidos.dart';
