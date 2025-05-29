@@ -4,5 +4,27 @@
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0"
-  }
+  },
+  "name": "resenha_app",
+  "version": "1.0.0",
+  "description": "Aplicativo desenvolvido para facilitar e padronizar o preenchimento de **resenhas operacionais policiais**, com integração de voz, salvamento automático de rascunhos e geração de texto final estruturado.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucz1k/resenha_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucz1k/resenha_app/issues"
+  },
+  "homepage": "https://github.com/lucz1k/resenha_app#readme"
 }
