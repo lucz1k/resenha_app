@@ -29,4 +29,4 @@ flutter:
   # ✅ Apenas para builds locais (desenvolvimento)
   # Em produção, o Codemagic cria dinamicamente o .env e remove esta linha
   assets:
-    - .env
+  ##  - .env
