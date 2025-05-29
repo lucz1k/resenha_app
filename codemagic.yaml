@@ -6,12 +6,12 @@ workflows:
       flutter: stable
       vars:
         APP_NAME: "ResenhaApp"
-        OPENAI_API_KEY: $OPENAI_API_KEY
-        CM_KEYSTORE_PASSWORD: $CM_KEYSTORE_PASSWORD
-        CM_KEY_ALIAS: $CM_KEY_ALIAS
-        CM_KEY_PASSWORD: $CM_KEY_PASSWORD
+        OPENAI_API_KEY: Encrypted(OPENAI_API_KEY)
+        CM_KEYSTORE_PASSWORD: Encrypted(CM_KEYSTORE_PASSWORD)
+        CM_KEY_ALIAS: Encrypted(CM_KEY_ALIAS)
+        CM_KEY_PASSWORD: Encrypted(CM_KEY_PASSWORD)
       android_signing:
-        - keystore: resenha_keystore # <== nome salvo no painel do Codemagic
+        - keystore: resenha_keystore
 
     scripts:
       - name: 📝 Criar arquivo .env

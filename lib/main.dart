@@ -7,21 +7,19 @@ import 'package:resenha_app/screens/envolvidos.dart';
 import 'package:resenha_app/screens/veiculos_outros.dart';
 import 'package:resenha_app/screens/historico.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   try {
     await dotenv.load(fileName: ".env");
-    debugPrint("✅ .env carregado com sucesso");
   } catch (e) {
-    debugPrint("⚠️ Erro ao carregar .env: $e");
+    debugPrint("⚠️ .env não encontrado, usando fallback...");
     dotenv.testLoad(
       fileInput: 'OPENAI_API_KEY=${const String.fromEnvironment('OPENAI_API_KEY')}',
     );
   }
 
-  runApp(MyApp());
-  debugPrint("🚀 runApp foi chamado");
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
